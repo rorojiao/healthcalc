@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Heart Rate Zone Calculator - HealthCalc 🏥 | Target Heart Rate</title>
+<meta name="description" content="Free heart rate zone calculator. Find your max heart rate and optimal fat burn, aerobic, and anaerobic training zones by age.">
+<meta name="keywords" content="heart rate zone calculator, target heart rate, max heart rate, fat burn zone, 心率区间, 心拍ゾーン">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/heart-rate.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="container">
+  <a href="index.html" class="logo"><span>🏥</span> HealthCalc</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="bmi.html" data-i18n="nav.bmi">BMI</a>
+    <a href="calories.html" data-i18n="nav.calories">Calories</a>
+    <a href="water.html" data-i18n="nav.water">Water</a>
+    <a href="sleep.html" data-i18n="nav.sleep">Sleep</a>
+    <a href="heart-rate.html" class="active" data-i18n="nav.heart">Heart Rate</a>
+    <div class="lang-sw">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="zh" onclick="setLang('zh')">中</button>
+      <button data-lang="ja" onclick="setLang('ja')">日</button>
+    </div>
+  </div>
+</div></nav>
+
+<div class="container calc-page">
+  <h1 data-i18n="heart.title">Heart Rate Zone Calculator</h1>
+  <p class="subtitle" data-i18n="heart.sub">Find your optimal training zones</p>
+  <div class="calc-box">
+    <label data-i18n="heart.age">Age</label>
+    <input type="number" id="age" placeholder="25" min="1" max="120">
+    <button class="calc-btn" onclick="calcHR()" data-i18n="heart.btn">Calculate Zones</button>
+    <div class="result" id="result">
+      <div class="label" data-i18n="heart.max">Max Heart Rate</div>
+      <h2 id="hr-max"></h2>
+      <div class="label">BPM</div>
+      <div style="margin-top:16px">
+        <div class="zone zone-fat"><div class="dot"></div><span><span data-i18n="heart.fat">Fat Burn Zone (50-70%)</span>: <strong id="z-fat"></strong></span></div>
+        <div class="zone zone-aero"><div class="dot"></div><span><span data-i18n="heart.aero">Aerobic Zone (70-85%)</span>: <strong id="z-aero"></strong></span></div>
+        <div class="zone zone-ana"><div class="dot"></div><span><span data-i18n="heart.ana">Anaerobic Zone (85-95%)</span>: <strong id="z-ana"></strong></span></div>
+      </div>
+      <div class="advice" style="margin-top:16px" data-i18n="heart.tips"></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="container">
+  <span data-i18n="footer.made">Free health tools by</span> HealthCalc 🏥<br>
+  <button class="tip-btn" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✅ Copied!')" data-i18n="footer.tip">☕ Buy me a coffee (ETH)</button>
+  <div class="tip-addr">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
+</div></footer>
+<script src="i18n.js"></script>
+<script>
+function calcHR(){
+  const age=+document.getElementById('age').value;
+  if(!age)return;
+  const max=220-age;
+  document.getElementById('hr-max').textContent=max;
+  document.getElementById('z-fat').textContent=`${Math.round(max*.5)} - ${Math.round(max*.7)} BPM`;
+  document.getElementById('z-aero').textContent=`${Math.round(max*.7)} - ${Math.round(max*.85)} BPM`;
+  document.getElementById('z-ana').textContent=`${Math.round(max*.85)} - ${Math.round(max*.95)} BPM`;
+  document.getElementById('result').classList.add('show');
+  render();
+}
+</script>
+</body></html>

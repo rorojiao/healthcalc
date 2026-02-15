@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Water Intake Calculator - HealthCalc 🏥 | Daily Water Needs</title>
+<meta name="description" content="Free water intake calculator. Find out how much water you should drink daily based on your body weight.">
+<meta name="keywords" content="water intake calculator, daily water needs, hydration calculator, 饮水量计算, 水分摂取量">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/water.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="container">
+  <a href="index.html" class="logo"><span>🏥</span> HealthCalc</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="bmi.html" data-i18n="nav.bmi">BMI</a>
+    <a href="calories.html" data-i18n="nav.calories">Calories</a>
+    <a href="water.html" class="active" data-i18n="nav.water">Water</a>
+    <a href="sleep.html" data-i18n="nav.sleep">Sleep</a>
+    <a href="heart-rate.html" data-i18n="nav.heart">Heart Rate</a>
+    <div class="lang-sw">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="zh" onclick="setLang('zh')">中</button>
+      <button data-lang="ja" onclick="setLang('ja')">日</button>
+    </div>
+  </div>
+</div></nav>
+
+<div class="container calc-page">
+  <h1 data-i18n="water.title">Water Intake Calculator</h1>
+  <p class="subtitle" data-i18n="water.sub">How much water should you drink daily?</p>
+  <div class="calc-box">
+    <label data-i18n="water.weight">Weight (kg)</label>
+    <input type="number" id="weight" placeholder="70" min="10" max="500">
+    <button class="calc-btn" onclick="calcWater()" data-i18n="water.btn">Calculate</button>
+    <div class="result" id="result">
+      <div class="label" data-i18n="water.result">Recommended Daily Water Intake</div>
+      <h2 id="water-val"></h2>
+      <div class="label" data-i18n="water.unit">liters/day</div>
+      <div class="advice" data-i18n="water.tips"></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="container">
+  <span data-i18n="footer.made">Free health tools by</span> HealthCalc 🏥<br>
+  <button class="tip-btn" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✅ Copied!')" data-i18n="footer.tip">☕ Buy me a coffee (ETH)</button>
+  <div class="tip-addr">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
+</div></footer>
+<script src="i18n.js"></script>
+<script>
+function calcWater(){
+  const w=+document.getElementById('weight').value;
+  if(!w)return;
+  const liters=(w*0.033).toFixed(1);
+  document.getElementById('water-val').textContent=liters;
+  document.getElementById('result').classList.add('show');
+  render();
+}
+</script>
+</body></html>

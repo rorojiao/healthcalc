@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sleep Cycle Calculator - HealthCalc 🏥 | Best Bedtime Calculator</title>
+<meta name="description" content="Free sleep cycle calculator. Enter your wake-up time to find the best bedtime based on 90-minute sleep cycles for optimal rest.">
+<meta name="keywords" content="sleep cycle calculator, bedtime calculator, sleep calculator, 睡眠計算, 睡眠周期">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/sleep.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="container">
+  <a href="index.html" class="logo"><span>🏥</span> HealthCalc</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="bmi.html" data-i18n="nav.bmi">BMI</a>
+    <a href="calories.html" data-i18n="nav.calories">Calories</a>
+    <a href="water.html" data-i18n="nav.water">Water</a>
+    <a href="sleep.html" class="active" data-i18n="nav.sleep">Sleep</a>
+    <a href="heart-rate.html" data-i18n="nav.heart">Heart Rate</a>
+    <div class="lang-sw">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="zh" onclick="setLang('zh')">中</button>
+      <button data-lang="ja" onclick="setLang('ja')">日</button>
+    </div>
+  </div>
+</div></nav>
+
+<div class="container calc-page">
+  <h1 data-i18n="sleep.title">Sleep Cycle Calculator</h1>
+  <p class="subtitle" data-i18n="sleep.sub">Based on 90-minute sleep cycles</p>
+  <div class="calc-box">
+    <label data-i18n="sleep.wake">Wake-up Time</label>
+    <input type="time" id="wake" value="07:00">
+    <button class="calc-btn" onclick="calcSleep()" data-i18n="sleep.btn">Calculate Bedtimes</button>
+    <div class="result" id="result">
+      <div class="label" data-i18n="sleep.result">Suggested Bedtimes</div>
+      <div class="sleep-times" id="sleep-times"></div>
+      <div class="advice" style="margin-top:16px" data-i18n="sleep.tips"></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="container">
+  <span data-i18n="footer.made">Free health tools by</span> HealthCalc 🏥<br>
+  <button class="tip-btn" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✅ Copied!')" data-i18n="footer.tip">☕ Buy me a coffee (ETH)</button>
+  <div class="tip-addr">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
+</div></footer>
+<script src="i18n.js"></script>
+<script>
+function calcSleep(){
+  const wake=document.getElementById('wake').value;
+  if(!wake)return;
+  const[h,m]=wake.split(':').map(Number);
+  const wakeMin=h*60+m;
+  const fallAsleep=14; // avg 14 min to fall asleep
+  let html='';
+  for(let c=6;c>=3;c--){
+    const bedMin=((wakeMin-c*90-fallAsleep)%1440+1440)%1440;
+    const bh=Math.floor(bedMin/60).toString().padStart(2,'0');
+    const bm=(bedMin%60).toString().padStart(2,'0');
+    const rec=c>=5?'recommended':'';
+    const recLabel=c>=5?`<br><small style="color:var(--green)">${t('sleep.recommended')} ✓</small>`:'';
+    html+=`<div class="sleep-card ${rec}"><div class="time">${bh}:${bm}</div><div class="cycles">${c} ${t('sleep.cycles')}${recLabel}</div></div>`;
+  }
+  document.getElementById('sleep-times').innerHTML=html;
+  document.getElementById('result').classList.add('show');
+  render();
+}
+</script>
+</body></html>

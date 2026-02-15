@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calorie Calculator - HealthCalc 🏥 | Daily Calorie Needs</title>
+<meta name="description" content="Free calorie calculator using Harris-Benedict equation. Calculate daily calorie needs based on age, sex, weight, height, and activity level.">
+<meta name="keywords" content="calorie calculator, daily calorie needs, Harris-Benedict, TDEE calculator, カロリー計算, 卡路里计算器">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/calories.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="container">
+  <a href="index.html" class="logo"><span>🏥</span> HealthCalc</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="bmi.html" data-i18n="nav.bmi">BMI</a>
+    <a href="calories.html" class="active" data-i18n="nav.calories">Calories</a>
+    <a href="water.html" data-i18n="nav.water">Water</a>
+    <a href="sleep.html" data-i18n="nav.sleep">Sleep</a>
+    <a href="heart-rate.html" data-i18n="nav.heart">Heart Rate</a>
+    <div class="lang-sw">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="zh" onclick="setLang('zh')">中</button>
+      <button data-lang="ja" onclick="setLang('ja')">日</button>
+    </div>
+  </div>
+</div></nav>
+
+<div class="container calc-page">
+  <h1 data-i18n="cal.title">Daily Calorie Calculator</h1>
+  <p class="subtitle" data-i18n="cal.sub">Based on Harris-Benedict equation</p>
+  <div class="calc-box">
+    <div class="row">
+      <div><label data-i18n="cal.age">Age</label><input type="number" id="age" placeholder="25" min="1" max="120"></div>
+      <div><label data-i18n="cal.sex">Sex</label>
+        <select id="sex"><option value="m" data-i18n="cal.male">Male</option><option value="f" data-i18n="cal.female">Female</option></select>
+      </div>
+    </div>
+    <div class="row">
+      <div><label data-i18n="cal.height">Height (cm)</label><input type="number" id="height" placeholder="170" min="50" max="300"></div>
+      <div><label data-i18n="cal.weight">Weight (kg)</label><input type="number" id="weight" placeholder="70" min="10" max="500"></div>
+    </div>
+    <label data-i18n="cal.activity">Activity Level</label>
+    <select id="activity"></select>
+    <button class="calc-btn" onclick="calcCal()" data-i18n="cal.btn">Calculate</button>
+    <div class="result" id="result">
+      <div class="label" data-i18n="cal.result">Your Daily Calorie Need</div>
+      <h2 id="cal-val"></h2>
+      <div class="label" data-i18n="cal.unit">kcal/day</div>
+      <div class="advice" data-i18n="cal.tips"></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="container">
+  <span data-i18n="footer.made">Free health tools by</span> HealthCalc 🏥<br>
+  <button class="tip-btn" onclick="navigator.clipboard.writeText('0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823').then(()=>this.textContent='✅ Copied!')" data-i18n="footer.tip">☕ Buy me a coffee (ETH)</button>
+  <div class="tip-addr">0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</div>
+</div></footer>
+<script src="i18n.js"></script>
+<script>
+function calcCal(){
+  const age=+document.getElementById('age').value;
+  const sex=document.getElementById('sex').value;
+  const h=+document.getElementById('height').value;
+  const w=+document.getElementById('weight').value;
+  const act=+document.getElementById('activity').value;
+  if(!age||!h||!w)return;
+  const mult=[1.2,1.375,1.55,1.725,1.9][act];
+  let bmr;
+  if(sex==='m') bmr=88.362+13.397*w+4.799*h-5.677*age;
+  else bmr=447.593+9.247*w+3.098*h-4.330*age;
+  const cal=Math.round(bmr*mult);
+  document.getElementById('cal-val').textContent=cal.toLocaleString();
+  document.getElementById('result').classList.add('show');
+  render(); // refresh i18n for tips
+}
+</script>
+</body></html>
