@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>基础代谢率计算器 | HealthCalc</title>
+<meta name="description" content="计算基础代谢率BMR和每日总消耗TDEE。">
+<meta name="keywords" content="基础代谢率,BMR计算器,TDEE">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/bmr.html">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="基础代谢率计算器 | HealthCalc">
+<meta property="og:description" content="计算基础代谢率BMR和每日总消耗TDEE。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rorojiao.github.io/healthcalc/bmr.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"基础代谢率计算器","url":"https://rorojiao.github.io/healthcalc/bmr.html","description":"计算基础代谢率BMR和每日总消耗TDEE。"}</script>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="index.html" class="logo">💪 HealthCalc 健康计算</a>
+<button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+<nav class="nav"><a href="index.html">首页</a><a href="bmi.html">BMI</a><a href="calories.html">热量</a><a href="heart-rate.html">心率</a><a href="water.html">饮水</a><a href="body-fat.html">体脂率</a><a href="ideal-weight.html">标准体重</a><a href="pregnancy.html">预产期</a><a href="ovulation.html">排卵期</a><a href="blood-sugar.html">血糖</a></nav>
+</div></header>
+<div class="container">
+<h1>基础代谢率(BMR)</h1><p class="subtitle">Mifflin-St Jeor公式</p><div class="card"><div class="form-row"><div class="form-group"><label>性别</label><select id="sex" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd"><option value="m">男</option><option value="f">女</option></select></div><div class="form-group"><label>年龄</label><input type="number" id="age" value="30"></div></div><div class="form-row"><div class="form-group"><label>身高(cm)</label><input type="number" id="h" value="175"></div><div class="form-group"><label>体重(kg)</label><input type="number" id="w" value="70"></div></div><div class="form-group"><label>活动量</label><select id="act" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd"><option value="1.2">久坐</option><option value="1.375">轻度运动</option><option value="1.55" selected>中度运动</option><option value="1.725">重度运动</option><option value="1.9">专业运动员</option></select></div><button class="btn" onclick="calc()">计算</button><div id="r" style="margin-top:20px;font-size:18px"></div></div><script>function calc(){const s=document.getElementById("sex").value,a=+document.getElementById("age").value,h=+document.getElementById("h").value,w=+document.getElementById("w").value,act=+document.getElementById("act").value;const bmr=s==="m"?10*w+6.25*h-5*a+5:10*w+6.25*h-5*a-161;const tdee=bmr*act;document.getElementById("r").innerHTML="<p>🔥 BMR：<b>"+bmr.toFixed(0)+" kcal/天</b></p><p>⚡ TDEE：<b style=color:#2563eb;font-size:22px>"+tdee.toFixed(0)+" kcal/天</b></p><p>减脂建议：每天摄入 <b>"+(tdee-500).toFixed(0)+" kcal</b>（TDEE-500）</p>"}</script>
+</div>
+<div class="more-tools" style="max-width:800px;margin:40px auto;padding:20px;background:#f8f9fa;border-radius:12px;text-align:center">
+<h3 style="margin-bottom:12px">🔗 更多免费工具</h3>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><a href="https://rorojiao.github.io/calcsmart/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">⚡智算</a>
+<a href="https://rorojiao.github.io/devtoolbox/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🛠️开发</a>
+<a href="https://rorojiao.github.io/unitswitch/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔄换算</a>
+<a href="https://rorojiao.github.io/fortune-tools/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔮算命</a>
+<a href="https://rorojiao.github.io/datecalc/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📅日期</a>
+<a href="https://rorojiao.github.io/namegenius/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">✨起名</a>
+<a href="https://rorojiao.github.io/cryptogauge/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">₿加密</a></div></div>
+<div class="donate"><p>☕ 觉得好用？打赏一杯咖啡</p><p>ETH/USDT: <code>0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</code></p></div>
+<div style="text-align:center;margin:20px auto;max-width:728px;"><iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0;padding:0;width:100%;height:auto;min-height:60px;overflow:hidden;display:block;margin:auto;"></iframe></div>
+<footer class="footer">© 2026 HealthCalc 健康计算</footer>
+<script>fetch("https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(location.hostname)+"&p="+encodeURIComponent(location.pathname)).catch(()=>{})</script>
+</body>
+</html>

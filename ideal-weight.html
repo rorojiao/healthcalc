@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>标准体重计算器 | HealthCalc</title>
+<meta name="description" content="根据身高性别计算理想体重。">
+<meta name="keywords" content="标准体重,理想体重">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/ideal-weight.html">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="标准体重计算器 | HealthCalc">
+<meta property="og:description" content="根据身高性别计算理想体重。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rorojiao.github.io/healthcalc/ideal-weight.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"标准体重计算器","url":"https://rorojiao.github.io/healthcalc/ideal-weight.html","description":"根据身高性别计算理想体重。"}</script>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="index.html" class="logo">💪 HealthCalc 健康计算</a>
+<button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+<nav class="nav"><a href="index.html">首页</a><a href="bmi.html">BMI</a><a href="calories.html">热量</a><a href="heart-rate.html">心率</a><a href="water.html">饮水</a><a href="body-fat.html">体脂率</a><a href="ideal-weight.html" class=active>标准体重</a><a href="pregnancy.html">预产期</a><a href="ovulation.html">排卵期</a><a href="blood-sugar.html">血糖</a></nav>
+</div></header>
+<div class="container">
+<h1>标准体重计算器</h1><p class="subtitle">理想体重范围</p><div class="card"><div class="form-row"><div class="form-group"><label>性别</label><select id="sex" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd"><option value="m">男</option><option value="f">女</option></select></div><div class="form-group"><label>身高(cm)</label><input type="number" id="h" value="175"></div></div><button class="btn" onclick="calc()">计算</button><div id="r" style="margin-top:20px;font-size:18px"></div></div><div class="card" style="margin-top:20px"><h2>公式</h2><p>BMI法：22×身高²(m) | 世卫：男(身高-80)×0.7，女(身高-70)×0.6</p></div><script>function calc(){const s=document.getElementById("sex").value,h=+document.getElementById("h").value;const b=22*(h/100)**2,w=s==="m"?(h-80)*0.7:(h-70)*0.6;document.getElementById("r").innerHTML="<p>BMI法：<b>"+b.toFixed(1)+"kg</b>（±10%："+((b*0.9).toFixed(1))+"-"+(b*1.1).toFixed(1)+"kg）</p><p>世卫：<b>"+w.toFixed(1)+"kg</b></p>"}</script>
+</div>
+<div class="more-tools" style="max-width:800px;margin:40px auto;padding:20px;background:#f8f9fa;border-radius:12px;text-align:center">
+<h3 style="margin-bottom:12px">🔗 更多免费工具</h3>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><a href="https://rorojiao.github.io/calcsmart/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">⚡智算</a>
+<a href="https://rorojiao.github.io/devtoolbox/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🛠️开发</a>
+<a href="https://rorojiao.github.io/unitswitch/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔄换算</a>
+<a href="https://rorojiao.github.io/fortune-tools/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔮算命</a>
+<a href="https://rorojiao.github.io/datecalc/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📅日期</a>
+<a href="https://rorojiao.github.io/namegenius/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">✨起名</a>
+<a href="https://rorojiao.github.io/cryptogauge/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">₿加密</a></div></div>
+<div class="donate"><p>☕ 觉得好用？打赏一杯咖啡</p><p>ETH/USDT: <code>0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</code></p></div>
+<div style="text-align:center;margin:20px auto;max-width:728px;"><iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0;padding:0;width:100%;height:auto;min-height:60px;overflow:hidden;display:block;margin:auto;"></iframe></div>
+<footer class="footer">© 2026 HealthCalc 健康计算</footer>
+<script>fetch("https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(location.hostname)+"&p="+encodeURIComponent(location.pathname)).catch(()=>{})</script>
+</body>
+</html>

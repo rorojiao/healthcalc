@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>预产期计算器 | HealthCalc</title>
+<meta name="description" content="根据末次月经计算预产期。">
+<meta name="keywords" content="预产期计算器,孕周计算">
+<link rel="canonical" href="https://rorojiao.github.io/healthcalc/pregnancy.html">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="预产期计算器 | HealthCalc">
+<meta property="og:description" content="根据末次月经计算预产期。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rorojiao.github.io/healthcalc/pregnancy.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"预产期计算器","url":"https://rorojiao.github.io/healthcalc/pregnancy.html","description":"根据末次月经计算预产期。"}</script>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="index.html" class="logo">💪 HealthCalc 健康计算</a>
+<button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+<nav class="nav"><a href="index.html">首页</a><a href="bmi.html">BMI</a><a href="calories.html">热量</a><a href="heart-rate.html">心率</a><a href="water.html">饮水</a><a href="body-fat.html">体脂率</a><a href="ideal-weight.html">标准体重</a><a href="pregnancy.html" class=active>预产期</a><a href="ovulation.html">排卵期</a><a href="blood-sugar.html">血糖</a></nav>
+</div></header>
+<div class="container">
+<h1>预产期计算器</h1><p class="subtitle">末次月经算预产期</p><div class="card"><div class="form-group"><label>末次月经第一天</label><input type="date" id="lmp"></div><button class="btn" onclick="calc()">计算</button><div id="r" style="margin-top:20px;font-size:18px"></div></div><div class="card" style="margin-top:20px"><h2>说明</h2><p>预产期=末次月经+280天(40周)。实际分娩可在预产期前后2周。</p></div><script>function calc(){const d=new Date(document.getElementById("lmp").value);if(isNaN(d))return alert("请选择日期");const edd=new Date(d.getTime()+280*864e5);const now=new Date(),weeks=Math.floor((now-d)/864e5/7),days=Math.floor((now-d)/864e5)%7;const left=Math.ceil((edd-now)/864e5);document.getElementById("r").innerHTML="<p>🤰 预产期：<b style=font-size:22px;color:#2563eb>"+edd.toLocaleDateString()+"</b></p><p>📅 当前孕周：<b>"+weeks+"周"+days+"天</b></p><p>⏳ 距预产期：<b>"+left+"天</b></p>"}</script>
+</div>
+<div class="more-tools" style="max-width:800px;margin:40px auto;padding:20px;background:#f8f9fa;border-radius:12px;text-align:center">
+<h3 style="margin-bottom:12px">🔗 更多免费工具</h3>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><a href="https://rorojiao.github.io/calcsmart/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">⚡智算</a>
+<a href="https://rorojiao.github.io/devtoolbox/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🛠️开发</a>
+<a href="https://rorojiao.github.io/unitswitch/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔄换算</a>
+<a href="https://rorojiao.github.io/fortune-tools/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔮算命</a>
+<a href="https://rorojiao.github.io/datecalc/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📅日期</a>
+<a href="https://rorojiao.github.io/namegenius/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">✨起名</a>
+<a href="https://rorojiao.github.io/cryptogauge/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">₿加密</a></div></div>
+<div class="donate"><p>☕ 觉得好用？打赏一杯咖啡</p><p>ETH/USDT: <code>0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</code></p></div>
+<div style="text-align:center;margin:20px auto;max-width:728px;"><iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0;padding:0;width:100%;height:auto;min-height:60px;overflow:hidden;display:block;margin:auto;"></iframe></div>
+<footer class="footer">© 2026 HealthCalc 健康计算</footer>
+<script>fetch("https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(location.hostname)+"&p="+encodeURIComponent(location.pathname)).catch(()=>{})</script>
+</body>
+</html>
